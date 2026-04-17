@@ -47,7 +47,7 @@ export interface SiteContent {
 const content: SiteContent = {
   name: "Ronald",
   role: "Software Engineer",
-  tagline: "Building clean, thoughtful software — one commit at a time.",
+  tagline: "Turning problems into solutions, one commit at a time.",
   bio: "I'm a software engineer passionate about taking concepts and turning them into real products. I enjoy exploring machine learning and building tools that I find useful for my personal pain points.",
   email: "r3ma@uwaterloo.ca",
   github: "https://github.com/ItsRonald99",
