@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ronald's Portfolio
+
+A modern, production-quality personal portfolio website built with a pixel-art inspired aesthetic, smooth animations, and a fully static architecture.
+
+## Stack
+
+- **Next.js 16** (App Router) — React framework
+- **TypeScript** — strict mode throughout
+- **Tailwind CSS v4** — utility-first styling
+- **Framer Motion** — animations and transitions
+- **Vitest + Testing Library** — unit tests
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm start` | Serve production build |
+| `npm run lint` | Run ESLint |
+| `npx tsc --noEmit` | Type check |
+| `npm test` | Run test suite |
+| `npm run test:watch` | Tests in watch mode |
 
-## Learn More
+## Customizing Content
 
-To learn more about Next.js, take a look at the following resources:
+Everything rendered on the page — name, projects, interests, education — comes from a single file:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+data/content.ts
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Edit it to make the site your own. The TypeScript interfaces at the top of the file document every available field.
 
-## Deploy on Vercel
+### Adding a project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```ts
+{
+  id: "project-7",
+  title: "My New Project",
+  description: "One-line summary shown on the card.",
+  longDescription: "Full description shown in the modal.",
+  tags: ["React", "TypeScript"],
+  githubUrl: "https://github.com/you/repo",
+  liveUrl: "https://your-demo.com",       // optional
+  imageUrl: "/images/my-project.png",     // optional — place in /public/images/
+  youtubeId: "dQw4w9WgXcQ",              // optional — 11-char YouTube video ID
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A project can have an image preview, a YouTube embed (loaded lazily), or neither. YouTube IDs are validated against `/^[a-zA-Z0-9_-]{11}$/` before being embedded.
+
+## Project Structure
+
+```
+app/
+  components/    Reusable UI — Button, NavBar, ProjectCard, ProjectModal, etc.
+  sections/      Page sections — Hero, Projects, Interests, Education, Footer
+  layout.tsx     Root layout: fonts, dark mode, CSP headers
+  page.tsx       Composes sections, passes content as props
+
+data/
+  content.ts     Single source of truth for all site content
+
+__tests__/
+  content.test.ts       Validates data shape and invariants
+  ProjectCard.test.tsx  Component rendering and interaction tests
+
+public/
+  images/        Static images referenced in content.ts
+```
+
+## Dark Mode
+
+Toggled via the button in the nav bar. Preference is persisted to `localStorage` and respects the system default on first visit.
+
+## Deployment
+
+The site is fully static and deploys anywhere that runs Node.js or serves static files.
+
+**Vercel (recommended):**
+```bash
+npx vercel
+```
+
+**Static export** (no server required):
+```ts
+// next.config.ts
+const nextConfig = {
+  output: "export",
+  // ...
+};
+```
+Then run `npm run build` — output lands in `/out`.
+
+> Note: static export disables the `headers()` CSP configuration. For a static host, set equivalent security headers in the platform's configuration (e.g. `vercel.json`, Netlify `_headers`).
