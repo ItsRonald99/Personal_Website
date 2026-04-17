@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const csp = [
   "default-src 'self'",
-  // Next.js requires unsafe-inline for its runtime scripts and styles
-  "script-src 'self' 'unsafe-inline'",
+  // unsafe-eval is needed in dev for React error overlays / call stack reconstruction.
+  // It is intentionally excluded from production builds.
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   // Local images + YouTube thumbnails
   "img-src 'self' data: https://img.youtube.com",
