@@ -31,7 +31,7 @@ export default function NavBar() {
           href="#"
           className="font-mono font-bold text-stone-900 dark:text-stone-100 tracking-tight text-base hover:text-amber-600 dark:hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded"
         >
-          ronald.dev
+          ronaldma.dev
         </a>
 
         {/* Desktop nav */}
