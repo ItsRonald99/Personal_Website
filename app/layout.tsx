@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     title: "Ronald — Software Engineer",
     description: "Personal portfolio of Ronald, a software engineer.",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };
 

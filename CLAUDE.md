@@ -41,7 +41,7 @@ type ProjectMediaItem =
 
 `ProjectModal.resolveMedia` validates YouTube IDs via `isSafeYoutubeId()` before including them. Keep that guard in place in any new consumer of `youtubeId`.
 
-When `project.liveUrl` is set to a non-empty string, a "Live Demo" button renders on both `ProjectCard` (inline amber button, stops card click propagation) and `ProjectModal` (uses `Button` with `variant="outline"`).
+When `project.liveUrl` is set to a non-empty string, a "Live App" button renders on both `ProjectCard` (inline amber button, stops card click propagation) and `ProjectModal` (uses `Button` with `variant="outline"`).
 
 ### Page composition
 `app/page.tsx` is a server component that imports `content` and passes slices of it as props to each section. Sections are in `app/sections/`, reusable primitives are in `app/components/`.

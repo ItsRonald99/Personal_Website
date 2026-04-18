@@ -15,6 +15,7 @@ export default function Home() {
           tagline: content.tagline,
           bio: content.bio,
           github: content.github,
+          linkedin: content.linkedin,
           email: content.email,
         }}
       />
