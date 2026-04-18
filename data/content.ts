@@ -58,7 +58,7 @@ const content: SiteContent = {
   bio: "I'm passionate about taking concepts and turning them into real products. I enjoy exploring machine learning and building tools that I find useful for my personal life.",
   email: "r3ma@uwaterloo.ca",
   github: "https://github.com/ItsRonald99",
-  linkedin: "https://linkedin.com/ronald-ma99",
+  linkedin: "https://linkedin.com/in/ronald-ma99",
 
   projects: [
     {
