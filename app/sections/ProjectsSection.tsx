@@ -20,7 +20,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         <SectionHeading
           label="Work"
           title="Projects"
-          subtitle="Things I've built — from side experiments to production-ready tools."
+          subtitle="Things I've built."
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
