@@ -51,13 +51,15 @@ Edit it to make the site your own. The TypeScript interfaces at the top of the f
   longDescription: "Full description shown in the modal.",
   tags: ["React", "TypeScript"],
   githubUrl: "https://github.com/you/repo",
-  liveUrl: "https://your-demo.com",       // optional
-  imageUrl: "/images/my-project.png",     // optional — place in /public/images/
-  youtubeId: "dQw4w9WgXcQ",              // optional — 11-char YouTube video ID
+  liveUrl: "https://your-demo.com",   // optional — shows a "Live App" button on card + modal
+  media: [                            // optional — place images in /public/images/
+    { type: "image", src: "/images/screenshot.png", alt: "App screenshot" },
+    { type: "youtube", id: "dQw4w9WgXcQ" },  // 11-char YouTube video ID
+  ],
 }
 ```
 
-A project can have an image preview, a YouTube embed (loaded lazily), or neither. YouTube IDs are validated against `/^[a-zA-Z0-9_-]{11}$/` before being embedded.
+A project can mix images and YouTube embeds in `media[]`. YouTube iframes are lazy-mounted and IDs are validated against `/^[a-zA-Z0-9_-]{11}$/` before embedding.
 
 ## Project Structure
 

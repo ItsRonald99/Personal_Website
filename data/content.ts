@@ -68,6 +68,7 @@ const content: SiteContent = {
       longDescription: "Our Turn is a full-stack household chore management app that lets users create or join shared house groups, assign tasks with flexible scheduling (manual, rotation, recurring), and track completion through a visual dashboard. It features secure authentication (JWT-based), role-based permissions, invitations, and automated email + in-app reminders for overdue chores.",
       tags: ["React (Vite)", "Node.js", "Drizzle ORM", "SQLite"],
       githubUrl: "https://github.com/ItsRonald99/Our_Turn",
+      liveUrl: "https://ourturn-production.up.railway.app/login",
       media: [
         { type: "image", src: "/images/OurTurn_Landing.png", alt: "Our Turn landing page" },
         { type: "image", src: "/images/OurTurn_HouseGroup.png", alt: "Our Turn group view" },
@@ -79,7 +80,8 @@ const content: SiteContent = {
       description: "A modern app that lets users share their contact information instantly via a personal QR code.",
       longDescription: "CallMe is a full-stack web application that enables users to create a private, customizable contact profile and share it seamlessly through a generated QR code or direct link. Users can manage multiple contact methods (phone, email, social links, custom URLs) with per-item visibility controls, ensuring privacy and flexibility. The app features secure authentication via Clerk, a responsive dashboard for profile management, and public profile pages that require no login to view, making real-world networking frictionless.",
       tags: ["Next.js 15", "PostgreSQL", "Prisma ORM", "Clerk Auth", "Tailwind CSS"],
-      githubUrl: "https://github.com/ItsRonald99/CallMe", // update if different
+      githubUrl: "https://github.com/ItsRonald99/CallMe",
+      liveUrl: "https://call-me-lemon-psi.vercel.app",
       media: [
         { type: "image", src: "/images/CallMe_Landing.png", alt: "CallMe landing page" },
         { type: "image", src: "/images/CallMe_Dashboard.png", alt: "CallMe dashboard view" },
@@ -92,6 +94,7 @@ const content: SiteContent = {
       longDescription: "WordMax is a full-stack AI-powered vocabulary learning app that lets users build a personal dictionary by saving words with context and example sentences. It automatically generates diverse practice exercises (fill-in-the-blank, real-world usage, sentence rewrites) using OpenAI, and reinforces retention through a spaced repetition system that adapts based on user performance. The app includes secure authentication, a structured practice workflow, and a dashboard for tracking learning progress.",
       tags: ["Next.js 14", "TypeScript", "Tailwind CSS", "Supabase (PostgreSQL + Auth)", "OpenAI GPT-4o-mini", "Vercel"],
       githubUrl: "https://github.com/ItsRonald99/WordMax",
+      liveUrl: "https://word-max-rho.vercel.app/login",
       media: [
         {
           type: "image",
