@@ -96,8 +96,8 @@ export default function HeroSection({ content }: HeroSectionProps) {
             {/* Decorative frame */}
             <div className="absolute inset-0 rounded-2xl border-2 border-stone-900/10 dark:border-stone-100/10 bg-amber-50/60 dark:bg-stone-800/40 shadow-lg overflow-hidden">
               <Image
-                src="/images/project-placeholder.svg"
-                alt="Pixel art landscape illustration"
+                src="/images/homepage-picture.jpg"
+                alt="A picture of me"
                 fill
                 className="object-cover"
                 priority
@@ -109,7 +109,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -bottom-4 -right-4 bg-amber-400 border-2 border-stone-900 rounded-lg px-3 py-1.5 font-mono text-xs font-bold text-stone-900 shadow-[2px_2px_0px_0px_rgba(28,25,23,1)]"
             >
-              SOFTWARE ENG
+              IT'S ME!
             </motion.div>
           </div>
         </motion.div>

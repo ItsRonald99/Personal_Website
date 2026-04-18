@@ -1,8 +1,9 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import type { Project } from "@/data/content";
+import type { Project, ProjectMediaItem } from "@/data/content";
+import MediaCarousel from "@/app/components/MediaCarousel";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,8 +11,16 @@ interface ProjectCardProps {
   index: number;
 }
 
+function resolveMedia(project: Project): ProjectMediaItem[] {
+  if (project.media && project.media.length > 0) return project.media;
+  const fallback: ProjectMediaItem[] = [];
+  if (project.imageUrl) fallback.push({ type: "image", src: project.imageUrl });
+  if (project.youtubeId) fallback.push({ type: "youtube", id: project.youtubeId });
+  return fallback;
+}
+
 export default function ProjectCard({ project, onClick, index }: ProjectCardProps) {
-  const hasMedia = project.imageUrl || project.youtubeId;
+  const media = useMemo(() => resolveMedia(project), [project]);
 
   return (
     <motion.article
@@ -31,37 +40,9 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
         }
       }}
     >
-      {/* Media area */}
-      {hasMedia && (
-        <div className="relative w-full aspect-video bg-stone-100 dark:bg-stone-800 overflow-hidden">
-          {project.imageUrl ? (
-            <Image
-              src={project.imageUrl}
-              alt={`${project.title} preview`}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          ) : project.youtubeId ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-stone-900">
-              <Image
-                src={`https://img.youtube.com/vi/${project.youtubeId}/mqdefault.jpg`}
-                alt={`${project.title} video thumbnail`}
-                fill
-                className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-              {/* Play button overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-amber-400 border-2 border-stone-900 flex items-center justify-center shadow-md">
-                  <svg className="w-5 h-5 text-stone-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          ) : null}
-        </div>
+      {/* Media carousel */}
+      {media.length > 0 && (
+        <MediaCarousel items={media} title={project.title} />
       )}
 
       {/* Content */}

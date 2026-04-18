@@ -39,6 +39,14 @@ describe("content data", () => {
       if (project.youtubeId) {
         expect(project.youtubeId).toMatch(safePattern);
       }
+      for (const item of project.media ?? []) {
+        if (item.type === "youtube") {
+          expect(item.id).toMatch(safePattern);
+        }
+        if (item.type === "image") {
+          expect(item.src).toBeTruthy();
+        }
+      }
     }
   });
 

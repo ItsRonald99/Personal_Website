@@ -1,3 +1,7 @@
+export type ProjectMediaItem =
+  | { type: "image"; src: string; alt?: string }
+  | { type: "youtube"; id: string };
+
 export interface Project {
   id: string;
   title: string;
@@ -6,8 +10,11 @@ export interface Project {
   tags: string[];
   githubUrl: string;
   liveUrl?: string;
+  /** @deprecated Use `media` instead */
   youtubeId?: string;
+  /** @deprecated Use `media` instead */
   imageUrl?: string;
+  media?: ProjectMediaItem[];
 }
 
 export interface Interest {
@@ -48,7 +55,7 @@ const content: SiteContent = {
   name: "Ronald",
   role: "Software Engineer",
   tagline: "Turning problems into solutions, one commit at a time.",
-  bio: "I'm a software engineer passionate about taking concepts and turning them into real products. I enjoy exploring machine learning and building tools that I find useful for my personal pain points.",
+  bio: "I'm passionate about taking concepts and turning them into real products. I enjoy exploring machine learning and building tools that I find useful for my personal life.",
   email: "r3ma@uwaterloo.ca",
   github: "https://github.com/ItsRonald99",
   linkedin: "https://linkedin.com/ronald-ma99",
@@ -56,12 +63,15 @@ const content: SiteContent = {
   projects: [
     {
       id: "project-1",
-      title: "AI Task Manager",
-      description: "A smart task management app powered by an LLM that auto-prioritizes your to-dos based on context and deadlines.",
-      longDescription: "Built with Next.js and the Claude API, this app takes your natural-language task descriptions and automatically categorizes, prioritizes, and schedules them. It features drag-and-drop reordering, deadline tracking, and a clean, minimal interface inspired by calm productivity tools.",
-      tags: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
-      githubUrl: "https://github.com/ItsRonald99",
-      imageUrl: "/images/project-placeholder.svg",
+      title: "Our Turn - Housemate Chore Tracker App",
+      description: "A chore management app for my housemates and I to track and assign chores.",
+      longDescription: "Our Turn is a full-stack household chore management app that lets users create or join shared house groups, assign tasks with flexible scheduling (manual, rotation, recurring), and track completion through a visual dashboard. It features secure authentication (JWT-based), role-based permissions, invitations, and automated email + in-app reminders for overdue chores.",
+      tags: ["React (Vite)", "Node.js", "Drizzle ORM with SQLite", "Tailwind CSS"],
+      githubUrl: "https://github.com/ItsRonald99/Our_Turn",
+      media: [
+        { type: "image", src: "/images/OurTurn_Landing.png", alt: "Our Turn landing page" },
+        { type: "image", src: "/images/OurTurn_HouseGroup.png", alt: "Our Turn group view" },
+      ],
     },
     {
       id: "project-2",
