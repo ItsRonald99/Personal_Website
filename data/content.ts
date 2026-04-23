@@ -107,6 +107,28 @@ const content: SiteContent = {
           alt: "WordMax practice session interface"
         }
       ],
+    },
+    {
+      id: "project-4",
+      title: "Trend Predictor - ML Stock & ETF Backtesting Pipeline",
+      description: "A full-stack data engineering and machine learning pipeline that predicts ETF returns and serves real-time trading signals via a deployed API.",
+      longDescription: "Trend Predictor is an end-to-end ML pipeline that ingests historical market data, engineers technical indicators (MACD, RSI, SMAs, volatility), and trains multiple models including Ridge Regression, Gradient Boosting, and Logistic Classification using time-series aware validation. It performs walk-forward backtesting with trading cost simulation and evaluates both ML performance (MAE, RMSE, AUC) and strategy metrics (CAGR, Sharpe, drawdown). The system is productionized with a FastAPI REST service that delivers real-time trading signals and backtest metrics, containerized with Docker and deployed via CI/CD.",
+      tags: ["Python", "Pandas", "Scikit-learn", "FastAPI", "Docker", "GitHub Actions", "Parquet", "TimeSeriesSplit"],
+      githubUrl: "https://github.com/ItsRonald99/trend-predictor",
+      liveUrl: "https://trend-predictor.onrender.com/docs",
+      media: [
+        {
+          type: "image",
+          src: "/images/QQQ_Equity_Curves.png",
+          alt: "QQQ Equity Curves"
+        },
+        {
+          type: "image",
+          src: "/images/TrendPredictor_API.png",
+          alt: "Trend Predictor API Swagger interface"
+        }
+
+      ],
     }
   ],
 
